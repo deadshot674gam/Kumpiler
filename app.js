@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const utils = require('./utils.js')
+const compile = require('./utils/ocr')
 const { argv } = require('yargs')
 
 // ------ imports ends here ------ //
@@ -30,11 +30,7 @@ yargs.showHelpOnFail(true).command({
         }
     },
     handler(argv) {
-        utils.ocr(argv.imageUrl)
-
-        setTimeout(function () {
-            utils.compile(argv.lang, argv.stdin)
-        }, 6000)
+        compile(argv.lang,argv.imageUrl,argv.stdin)        
     }
 })
 
